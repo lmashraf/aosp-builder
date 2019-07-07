@@ -22,6 +22,13 @@ RUN apt-get -y install git-core gnupg flex bison gperf build-essential \
 RUN curl http://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo
 RUN chmod +x /usr/local/bin/repo
 
+# Map volumes for AOSP sources
+VOLUME [ "/aosp" ]
+
+# Map volumes for generated artifacts and external apps
+VOLUME [ "/artifacts" ]
+VOLUME [ "/app" ]
+
 # Set up workspace
 RUN git config --global user.email "aosp-builder@uhworks.org" && \
     git config --global user.name "AOSP Builder" && \
@@ -32,9 +39,6 @@ RUN id
 RUN pwd
 RUN ls -lart
 
-# Map volumes for AOSP sources
-VOLUME [ "/aosp" ]
-
 # Build commands are to be executed on the top of AOSP's source tree
 WORKDIR /aosp
 
@@ -43,16 +47,12 @@ RUN id
 RUN pwd
 RUN ls -lart
 
-# Copy build scripts
-COPY scripts/*.sh /aosp/
+# Copy build scripts to host
+RUN cp scripts/*.sh /aosp/
 
 # DEBUG
 RUN id
 RUN pwd
 RUN ls -lart
-
-# Map volumes for generated artifacts and external apps
-VOLUME [ "/artifacts" ]
-VOLUME [ "/app" ]
 
 CMD "/bin/bash"
