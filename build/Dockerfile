@@ -48,6 +48,7 @@ RUN pwd
 RUN ls -lart
 
 # Copy build scripts to host
+COPY scripts/*.sh /aosp/
 RUN cp scripts/*.sh /aosp/
 
 # DEBUG
