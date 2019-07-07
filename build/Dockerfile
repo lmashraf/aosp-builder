@@ -39,6 +39,14 @@ RUN id
 RUN pwd
 RUN ls -lart
 
+# Copy build scripts to host
+COPY scripts/*.sh /aosp/
+
+# DEBUG
+RUN id
+RUN pwd
+RUN ls -lart
+
 # Build commands are to be executed on the top of AOSP's source tree
 WORKDIR /aosp
 
@@ -47,9 +55,7 @@ RUN id
 RUN pwd
 RUN ls -lart
 
-# Copy build scripts to host
-COPY scripts/*.sh /aosp/
-RUN cp scripts/*.sh /aosp/
+RUN cp *.sh /aosp/
 
 # DEBUG
 RUN id
