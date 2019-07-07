@@ -7,13 +7,22 @@ pipeline {
     stages
     {
         stage('prepare') {
-            sh 'echo "Preparing ..."'
+            steps {
+                sh 'echo "Preparing ..."'
+                sh 'cd /aosp && /aosp_repo.sh'
+                }
         }        
         stage('build') {
-            sh 'echo "Building ..."'
+            steps {
+                sh 'echo "Building ..."'
+                sh 'cd /aosp && /aosp_build.sh'
+            }
         }
         stage('archive') {
-            sh 'echo "Archiving ...""'
+            steps {
+                sh 'echo "Archiving ...""'
+                sh 'cd /aosp && /aosp_build.sh'
+            }
         }
     }
 }
