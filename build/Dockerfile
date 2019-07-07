@@ -36,7 +36,8 @@ USER jenkins
 VOLUME [ "/aosp" ]
 
 # Copy build scripts to host
-COPY scripts/*.sh /aosp/
+RUN chown -v $(id -u):$(id -g) scripts/*.sh
+RUN cp -va scripts/*.sh /aosp/
 
 # Map volumes for generated artifacts and external apps
 VOLUME [ "/artifacts" ]
