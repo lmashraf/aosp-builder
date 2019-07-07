@@ -34,8 +34,7 @@ VOLUME [ "/aosp" ]
 RUN ls -alrt
 RUN pwd
 RUN id
-RUN chown -v $(id -u):$(id -g) scripts/*
-RUN cp -va scripts/* /aosp/
+COPY scripts/sh.* /aosp/
 
 # Map volumes for generated artifacts and external apps
 VOLUME [ "/artifacts" ]
