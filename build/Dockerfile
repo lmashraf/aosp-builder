@@ -27,17 +27,32 @@ RUN git config --global user.email "aosp-builder@uhworks.org" && \
     git config --global user.name "AOSP Builder" && \
     git config --global color.ui auto
 
-# Build commands are to be executed on the top of AOSP's source tree
-WORKDIR /aosp
+# DEBUG
+RUN id
+RUN pwd
+RUN ls -lart
 
 # Map volumes for AOSP sources
 VOLUME [ "/aosp" ]
 
-# Map volumes for generated artifacts and external apps
-VOLUME [ "/artifacts" ]
-VOLUME [ "/app" ]
+# Build commands are to be executed on the top of AOSP's source tree
+WORKDIR /aosp
+
+# DEBUG
+RUN id
+RUN pwd
+RUN ls -lart
 
 # Copy build scripts
 COPY scripts/*.sh /aosp/
+
+# DEBUG
+RUN id
+RUN pwd
+RUN ls -lart
+
+# Map volumes for generated artifacts and external apps
+VOLUME [ "/artifacts" ]
+VOLUME [ "/app" ]
 
 CMD "/bin/bash"

@@ -8,7 +8,14 @@ pipeline {
     {
         stage('prepare') {
             steps {
-                sh 'cd /aosp && ./aosp_repo.sh'
+                sh 'pwd'
+                sh 'ls -lart'
+                sh 'id'
+                sh 'cd /aosp'
+                sh 'pwd'
+                sh 'ls -lart'
+                sh 'id'                
+                sh './aosp_repo.sh'
                 }
         }        
         stage('build') {
