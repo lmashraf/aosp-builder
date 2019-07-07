@@ -31,6 +31,9 @@ RUN git config --global user.email "aosp-builder@uhworks.org" && \
 VOLUME [ "/aosp" ]
 
 # Copy build scripts to host
+RUN ls- alrt
+RUN pwd
+RUN id
 RUN chown -v $(id -u):$(id -g) scripts/*
 RUN cp -va scripts/* /aosp/
 
@@ -40,5 +43,9 @@ VOLUME [ "/app" ]
 
 # Build commands are to be executed on the top of AOSP's source tree
 WORKDIR /aosp
+
+RUN ls- alrt
+RUN pwd
+RUN id
 
 #EOF
