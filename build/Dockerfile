@@ -40,7 +40,4 @@ VOLUME [ "/app" ]
 # Build commands are to be executed on the top of AOSP's source tree
 WORKDIR /aosp
 
-# DEBUG 
-RUN touch aosp.txt
-
 #EOF
