@@ -1,11 +1,11 @@
-echo " Syncing sources ..."
+#!/bin/bash
 
-git config --global user.name "Jenkins-Bot"
-git config --global user.email "Jenkins-Bot@UHWorks.org"
-git config --global color.ui auto
+echo "Syncing Sources ..."
 
-mkdir -p ~/aosp && cd ~/aosp
+# Download the Android source tree
+cd /aosp
+# repo init --depth=1 -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r45
+# repo sync  -f --force-sync --no-clone-bundle --no-tags -j$(nproc --all)
 
-repo init --depth=1 -u https://android.googlesource.com/platform/manifest -b android-4.0.1_r1
-# repo sync
-echo "repo sync"
+echo "repo init ..."
+echo "repo sync ..."
