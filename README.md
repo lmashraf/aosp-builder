@@ -4,7 +4,7 @@
 2- Fork this repository to your own
 3- Run Jenkins instance inside a Docker container with the command
 ```
-docker run -u root --rm -d -p 8080:8080 -p 50000:50000 -v $HOME/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/-v ~/aosp:/aosp -v ~/artifacts:/artifacts -v ~/app:/app docker.sock jenkinsci/blueocean
+docker run -u root --rm -d -p 8080:8080 -p 50000:50000 -v $HOME/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/aosp:/aosp -v $HOME/artifacts:/artifacts -v $HOME/app:/app jenkinsci/blueocean
 ```
 
 4- Add Jenkins' SSH access to your Git repository
