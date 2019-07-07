@@ -27,17 +27,12 @@ RUN git config --global user.email "aosp-builder@uhworks.org" && \
     git config --global user.name "AOSP Builder" && \
     git config --global color.ui auto
 
-# Create user "jenkins"
-RUN id jenkins 2>/dev/null || useradd --uid 1000 --create-home --shell /bin/bash jenkins
-
-USER jenkins
-
 # Map volumes for AOSP sources
 VOLUME [ "/aosp" ]
 
 # Copy build scripts to host
-RUN chown -v $(id -u):$(id -g) scripts/*.sh
-RUN cp -va scripts/*.sh /aosp/
+RUN chown -v $(id -u):$(id -g) scripts/*
+RUN cp -va scripts/* /aosp/
 
 # Map volumes for generated artifacts and external apps
 VOLUME [ "/artifacts" ]
