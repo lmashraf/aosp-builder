@@ -1,1 +1,3 @@
-echo "Building ..."
+#!/bin/bash
+
+echo "Building AOSP ..."

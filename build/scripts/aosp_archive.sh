@@ -1,1 +1,3 @@
-echo "Archiving ..."
+#!/bin/bash
+
+echo "Archiving System Images ..."
