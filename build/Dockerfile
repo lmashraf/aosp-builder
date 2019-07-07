@@ -27,6 +27,11 @@ RUN git config --global user.email "aosp-builder@uhworks.org" && \
     git config --global user.name "AOSP Builder" && \
     git config --global color.ui auto
 
+# Create user "jenkins"
+RUN id jenkins 2>/dev/null || useradd --uid 1000 --create-home --shell /bin/bash jenkins
+
+USER jenkins
+
 # Map volumes for AOSP sources
 VOLUME [ "/aosp" ]
 
@@ -39,8 +44,5 @@ VOLUME [ "/app" ]
 
 # Build commands are to be executed on the top of AOSP's source tree
 WORKDIR /aosp
-
-# DEBUG 
-RUN touch aosp.txt
 
 #EOF
