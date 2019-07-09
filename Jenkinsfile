@@ -9,7 +9,9 @@ pipeline {
     {
         stage('prepare') {
             steps {
-                sh 'cd /aosp && ./aosp_repo.sh'
+                sh 'cd /aosp'
+                sh 'ls -alrt /aosp/'
+                sh './aosp_repo.sh'
                 }
         }        
         stage('build') {
