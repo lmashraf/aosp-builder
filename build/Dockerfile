@@ -38,13 +38,11 @@ RUN useradd -ms /bin/bash jenkins
 WORKDIR /aosp
 
 # Copy build scripts to host
-COPY scripts/*.sh /aosp/
+COPY *.sh /aosp/
 RUN chmod a+x /aosp/*.sh && \
     chown jenkins:jenkins /aosp/*.sh
 
 RUN chown jenkins:jenkins /aosp
-
-VOLUME [ "/aosp" ]
 
 USER jenkins
 
