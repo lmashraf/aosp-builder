@@ -38,8 +38,7 @@ RUN useradd -ms /bin/bash jenkins
 WORKDIR /aosp
 
 # Copy build scripts to host
-RUN cp -v scripts/*.sh /aosp/
-
+COPY scripts/*.sh /aosp/
 RUN chmod a+x /aosp/*.sh && \
     chown jenkins:jenkins /aosp/*.sh
 
@@ -51,6 +50,8 @@ USER jenkins
 
 #DEBUG
 RUN ls -alrt
+RUN ls -alrt /aosp/
+
 RUN pwd
 RUN id
 
