@@ -32,11 +32,20 @@ RUN ls -alrt
 RUN pwd
 RUN id
 
+ENV USER jenkins
+RUN user add -ms /bin/bash jenkins
+
 # Build commands are to be executed on the top of AOSP's source tree
 WORKDIR /aosp
 
 # Copy build scripts to host
 COPY scripts/*.sh /aosp/
+RUN chmod a+x /aosp/*.sh && \
+    chown jenkins:jenkins /aosp/*.sh
+
+RUN chown jenkins:jenkins /aosp
+
+USER jenkins
 
 #DEBUG
 RUN ls -alrt
