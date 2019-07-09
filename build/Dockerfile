@@ -33,10 +33,7 @@ RUN pwd
 RUN id
 
 ENV USER jenkins
-RUN user add -ms /bin/bash jenkins
-
-# Build commands are to be executed on the top of AOSP's source tree
-WORKDIR /aosp
+RUN useradd -ms /bin/bash jenkins
 
 # Copy build scripts to host
 COPY scripts/*.sh /aosp/

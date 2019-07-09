@@ -2,6 +2,7 @@ pipeline {
     agent { 
         dockerfile {
             dir 'build'
+            args '-v /aosp:/aosp -v /app:/app -v /artifacts:/artifacts'
         }
     }
     stages
