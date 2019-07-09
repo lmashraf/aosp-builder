@@ -10,9 +10,9 @@ pipeline {
         stage('prepare') {
             steps {
                 sh 'cd /aosp'
-                sh 'ls -alrt /aosp/'
-                sh './aosp_repo.sh'
-                }
+                sh 'repo init --depth=1 -u https://android.googlesource.com/platform/manifest -b android-9.0.0_r45'
+                sh 'repo sync  -f --force-sync --no-clone-bundle --no-tags -j$(nproc --all)'
+            }
         }        
         stage('build') {
             steps {
