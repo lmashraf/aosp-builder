@@ -46,6 +46,8 @@ RUN chown jenkins:jenkins /aosp
 
 VOLUME [ "/aosp" ]
 
+RUN cp -v /aosp/*.sh /aosp/
+
 USER jenkins
 
 #DEBUG
