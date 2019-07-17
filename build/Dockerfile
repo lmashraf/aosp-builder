@@ -22,35 +22,15 @@ RUN apt-get -y install git-core gnupg flex bison gperf build-essential \
 RUN curl http://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo
 RUN chmod +x /usr/local/bin/repo
 
-# Set up workspace
-RUN git config --global user.email "aosp-builder@uhworks.org" && \
-    git config --global user.name "AOSP Builder" && \
-    git config --global color.ui auto
-
-#DEBUG
-RUN ls -alrt
-RUN pwd
-RUN id
-
-ENV USER jenkins
-RUN useradd -ms /bin/bash jenkins
-
-WORKDIR /aosp
-
 # Copy build scripts to host
 COPY *.sh /aosp/
-RUN chmod a+x /aosp/*.sh && \
-    chown jenkins:jenkins /aosp/*.sh
 
-RUN chown jenkins:jenkins /aosp
+# Permissions
+RUN chmod a+x /aosp/*.sh
+RUN chown jenkins:jenkins -R /aosp
 
 USER jenkins
 
-#DEBUG
-RUN ls -alrt
-RUN ls -alrt /aosp/
-
-RUN pwd
-RUN id
+WORKDIR /aosp
 
 #EOF
