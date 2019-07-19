@@ -4,6 +4,10 @@ pipeline {
             dir 'build'
         }
     }
+    environment {
+        AOSP_BRANCH = 'android-9.0.0_r45'
+        LUNCH_TARGET = 'aosp_x86_64-eng'
+    }
     stages
     {
         stage('prepare') {

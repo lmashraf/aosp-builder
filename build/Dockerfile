@@ -32,5 +32,3 @@ RUN chown jenkins:jenkins -R /aosp
 USER jenkins
 
 WORKDIR /aosp
-
-#EOF
